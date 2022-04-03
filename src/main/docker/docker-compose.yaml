@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  notification:
+    container_name: ead-notification-db
+    image: postgres
+    restart: always
+    command: -p 5441
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: notification
+    volumes:
+      - notification-volume:/var/lib/postgresql
+    networks:
+      - notification-network
+    expose:
+      - '5441'
+    ports:
+      - '5441:5441'
+
+volumes:
+  notification-volume:
+
+networks:
+  notification-network:
