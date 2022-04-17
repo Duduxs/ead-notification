@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -30,6 +31,7 @@ public class UserNotificationController {
     }
 
     @GetMapping("/users/{userId}/notifications")
+    @PreAuthorize("hasAnyRole('STUDENT')")
     public ResponseEntity<Page<NotificationModel>> findAllNotificationsByUser(
             @PathVariable UUID userId,
             @PageableDefault(page = 0, size = 10, sort = "id", direction = ASC)
@@ -41,6 +43,7 @@ public class UserNotificationController {
     }
 
     @PatchMapping("/users/{userId}/notifications/{notificationId}")
+    @PreAuthorize("hasAnyRole('STUDENT')")
     public ResponseEntity<NotificationModel> updateStatus(
             @PathVariable UUID userId,
             @PathVariable UUID notificationId,
