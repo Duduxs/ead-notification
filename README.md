@@ -77,9 +77,6 @@ To run notification:
 ## :memo: License
 This project is under the MIT license. See the [LICENSE](https://github.com/Duduxs/ead-notification/blob/main/LICENSE) for more information.
 
-
----
-
 ## :handshake: Ead Ecosystem
 Take a look into others microservices that were developed for the EAD Plataform.
  
